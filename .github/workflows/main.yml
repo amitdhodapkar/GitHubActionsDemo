@@ -1,8 +1,15 @@
-name: hello-world
-on: push
+name: CI on Self-Hosted Runner
+
+on:
+  push:
+    branches: [ main ]
+
 jobs:
-  my-job:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: self-hosted  # This targets your self-hosted runner
     steps:
-      - name: my-step
-        run: echo "Hello World!"
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run a script
+        run: echo "Running on my self-hosted runner"
